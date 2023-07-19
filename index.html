@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Color-changing Circle</title>
+  <style>
+    #circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: red;
+      transition: background-color 5s linear;
+    }
+  </style>
+</head>
+<body>
+  <div id="circle"></div>
+
+  <script>
+    var circle = document.getElementById("circle");
+    var hue = 0;
+    var saturation = 100;
+    var lightness = 50;
+    var step = 0.2;
+
+    function changeColor() {
+      hue += step;
+
+      if (hue >= 360) {
+        hue = 0; // Reset hue to 0
+      }
+
+      var color = "hsl(" + hue + ", " + saturation + "%, " + lightness + "%)";
+      circle.style.backgroundColor = color;
+
+      requestAnimationFrame(changeColor); // Continue the color-changing process
+    }
+
+    changeColor(); // Start the color-changing process
+  </script>
+</body>
+</html>
